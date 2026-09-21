@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Students — GEN Z Portal</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><span class="seal">EH</span> GEN Z</div>
+    <div class="mb-3 px-1"><span class="admin-badge"><i class="fa-solid fa-user-shield"></i> Admin</span></div>
+    <div class="nav-section-label">Overview</div>
+    <a href="index.html" class="side-link"><i class="fa-solid fa-gauge"></i> Admin Dashboard</a>
+    <div class="nav-section-label">Manage</div>
+    <a href="students.html" class="side-link active"><i class="fa-solid fa-users"></i> Students</a>
+    <a href="attendance.html" class="side-link"><i class="fa-solid fa-calendar-check"></i> Attendance</a>
+    <div class="nav-section-label">Account</div>
+    <a href="../index.html" class="side-link"><i class="fa-solid fa-arrow-left"></i> Back to Site</a>
+    <a href="#" class="side-link" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-sm btn-outline-secondary sidebar-toggle-btn" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <div class="fw-semibold" style="font-family:'Fraunces',serif;">Manage Students</div>
+          <div class="small text-secondary">Add, edit, or remove student accounts</div>
+        </div>
+      </div>
+      <div class="avatar-circle" id="avatarInit">--</div>
+    </div>
+
+    <div class="page-body">
+      <div class="filter-bar d-flex flex-wrap align-items-center gap-3 mb-4">
+        <div class="flex-grow-1" style="min-width:220px;">
+          <input type="text" class="form-control" id="searchInput" placeholder="Search by name, email, or Student ID…">
+        </div>
+        <select class="form-control form-select" id="courseFilter" style="max-width:240px;">
+          <option value="">All courses</option>
+        </select>
+        <button class="btn btn-gold ms-auto" data-bs-toggle="modal" data-bs-target="#studentModal" id="addStudentBtn">
+          <i class="fa-solid fa-user-plus me-2"></i>Add Student
+        </button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>All Students</h3>
+          <span class="small text-secondary" id="countLabel">0 students</span>
+        </div>
+        <div class="panel-body p-0 table-responsive">
+          <table class="ledger" id="studentsTable">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Student ID</th>
+                <th>Course</th>
+                <th>Attendance</th>
+                <th>Avg. Marks</th>
+                <th class="text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add / Edit Student Modal -->
+<div class="modal fade" id="studentModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentModalTitle">Add Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div id="studentFormAlert"></div>
+        <form id="studentForm">
+          <input type="hidden" name="studentId">
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Full Name</label>
+            <input type="text" class="form-control" name="fullName" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Email</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Course / Branch</label>
+            <select class="form-control form-select" name="course" required>
+              <option>B.Tech — Computer Engineering</option>
+              <option>B.Tech — Information Technology</option>
+              <option>B.Tech — Electronics</option>
+              <option>Diploma — Computer Engineering</option>
+              <option>Diploma — Mechanical Engineering</option>
+              <option>BCA</option>
+              <option>MCA</option>
+            </select>
+          </div>
+          <div class="mb-3" id="passwordField">
+            <label class="form-label small fw-semibold">Password</label>
+            <input type="password" class="form-control" name="password" minlength="6" placeholder="Minimum 6 characters">
+            <div class="form-text">Leave blank to keep the current password (only applies when editing).</div>
+          </div>
+          <button type="submit" class="btn btn-gold w-100 mt-2">Save Student</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete confirm modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Remove Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to remove <strong id="deleteStudentName"></strong>? This deletes their account and all academic records, and can't be undone.</p>
+        <div class="d-flex justify-content-end gap-2">
+          <button class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-danger" id="confirmDeleteBtn">Remove Student</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/auth.js"></script>
+<script src="../js/sidebar.js"></script>
+<script src="../js/admin-students.js"></script>
+</body>
+</html>
