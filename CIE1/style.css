@@ -1,0 +1,260 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth
+}
+
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#182235;
+    line-height:1.6}
+
+
+
+.site-header{
+    background:#102a43;
+    color:white;
+    padding:20px 7%;display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+    box-shadow:0 4px 14px rgba(0,0,0,.15)
+}
+.brand h1{
+    font-size:30px;
+    letter-spacing:2px
+}
+.brand p{
+    font-size:13px;
+    opacity:.8
+}
+
+nav{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
+}
+nav a{
+    color :white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:7px;
+    font-weight:bold ;
+    transition:.25s
+
+}
+nav a:hover{
+    background:#2f80ed;
+    transform:translateY(-2px)
+}
+
+.hero {
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    padding: 60px 7%;
+    background: linear-gradient(135deg, #dceeff, #ffffff);
+}
+
+.hero > div {
+    max-width: 720px;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #2f80ed;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.hero h2 {
+    font-size: 46px;
+    line-height: 1.1;
+    margin: 12px 0;
+}
+
+.hero p:not(.eyebrow) {
+    font-size: 18px;
+    color: #526173;
+    margin-bottom: 25px;
+}
+
+.hero-btn {
+    display: inline-block;
+    background: #2f80ed;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.section {
+    padding: 55px 7%;
+}
+
+.section h2,
+.contact h2 {
+    text-align: center;
+    font-size: 32px;
+}
+
+.section-intro {
+    text-align: center;
+    color: #64748b;
+    margin: 7px 0 30px;
+}
+
+.club-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.club-card {
+    background: white;
+    border: 1px solid #dbe4ef;
+    border-radius: 15px;
+    width: 31%;
+    min-width: 270px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(25, 55, 90, 0.08);
+    transition: 0.3s;
+}
+
+.club-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(25, 55, 90, 0.18);
+    border-color: #2f80ed;
+}
+
+.club-card img {
+    width: 100%;
+    height: 180px;
+    display: block;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card-content h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.card-content p {
+    color: #5f6f82;
+    min-height: 78px;
+}
+
+button {
+    margin-top: 15px;
+    border: 0;
+    background: #102a43;
+    color: white;
+    padding: 10px 17px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: #2f80ed;
+}
+
+.gallery-section {
+    background: #fff;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 22%;
+    min-width: 230px;
+    height: 190px;
+    object-fit: cover;
+    border: 5px solid white;
+    outline: 1px solid #d7e1ec;
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+    outline-color: #2f80ed;
+}
+
+.contact {
+    padding: 45px 7%;
+    text-align: center;
+    background: #eaf3ff;
+}
+
+.contact p {
+    max-width: 700px;
+    margin: 10px auto;
+    color: #526173;
+}
+
+footer {
+    background: #102a43;
+    color: white;
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+footer span {
+    opacity: 0.85;
+}
+
+@media (max-width: 800px) {
+    .hero h2 {
+        font-size: 36px;
+    }
+
+    .club-card {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .gallery img {
+        width: 45%;
+    }
+}
+
+@media (max-width: 520px) {
+    .site-header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .gallery img {
+        width: 100%;
+    }
+
+    .hero {
+        padding: 45px 6%;
+    }
+}
