@@ -1,0 +1,8 @@
+Add this line to your hosts file, then restart Apache from the XAMPP control panel.
+
+  Windows: C:\Windows\System32\drivers\etc\hosts   (open Notepad as Administrator)
+  macOS / Linux: /etc/hosts                        (sudo)
+
+127.0.0.1    studenthub.local
+
+Then open http://studenthub.local/

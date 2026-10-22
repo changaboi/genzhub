@@ -1,0 +1,10 @@
+# StudentHub — Apache hardening (works in XAMPP when AllowOverride All is on, which is the default for htdocs)
+Options -Indexes
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>
+# never serve internal PHP libraries, SQL dumps, docs or tests directly
+RedirectMatch 403 ^/(?:.*/)?(includes|tests|deploy)/
+<FilesMatch "\.(sql|md|log|ini|sh)$">
+  Require all denied
+</FilesMatch>

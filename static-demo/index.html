@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudentHub · campus events and student records</title>
+<meta name="description" content="Static showcase of StudentHub, a PHP and MySQL campus portal. The live application runs on a PHP host; this page is the online front door.">
+<style>
+:root{--bg:#eef3f1;--surface:#fff;--ink:#10282a;--muted:#55706f;--line:#d6e1de;--brand:#0f3d3e;--accent:#f2a900}
+@media (prefers-color-scheme:dark){:root{--bg:#0a1819;--surface:#112425;--ink:#e6f1ef;--muted:#93adab;--line:#234142;--brand:#5fe0c2}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
+header{padding:20px 0;display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.2rem;letter-spacing:-.02em}
+header i{width:34px;height:34px;border-radius:10px;background:var(--accent);display:inline-block}
+h1{font-size:clamp(2.4rem,1.5rem + 4vw,4.4rem);line-height:1;letter-spacing:-.04em;margin:40px 0 18px;max-width:14ch}
+h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 14px}
+.lede{color:var(--muted);font-size:1.15rem;max-width:56ch}
+.btn{display:inline-block;padding:13px 20px;border-radius:10px;background:var(--brand);color:#fff;text-decoration:none;font-weight:600;margin:6px 10px 6px 0}
+@media (prefers-color-scheme:dark){.btn{color:#062524}}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hero img{width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(10,40,40,.45);margin-top:36px}
+section{padding:44px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h3{margin:0 0 6px;font-size:1.05rem}.card p{margin:0;color:var(--muted)}
+figure{margin:0}figure img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}figcaption{color:var(--muted);font-size:.9rem;margin-top:8px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
+pre{background:var(--surface);border:1px solid var(--line);padding:16px;border-radius:12px;overflow-x:auto;font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.9rem}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><i aria-hidden="true"></i>StudentHub</header>
+  <div class="hero">
+    <h1>Every campus event, seat and student record.</h1>
+    <p class="lede">A semester project in PHP and MySQL: students register for events as tickets, admins manage students and events, and every important action lands in an audit log.</p>
+    <a class="btn" href="#run">Run it locally</a><a class="btn alt" href="#tour">Take the tour</a>
+    <img src="img/home.jpg" alt="StudentHub home page with three event tickets showing seats left" width="1200" height="740">
+  </div>
+
+  <section aria-labelledby="f">
+    <h2 id="f">What it does</h2>
+    <div class="grid">
+      <div class="card"><h3>Secure accounts</h3><p>Hashed passwords, CSRF protection, session timeout, login lock-out and hashed remember-me tokens.</p></div>
+      <div class="card"><h3>Student management</h3><p>Search, filter, sort, paginate, export to CSV and archive instead of deleting.</p></div>
+      <div class="card"><h3>Events with posters</h3><p>Validated, renamed uploads, categories, open or closed filters and an audit trail for every change.</p></div>
+      <div class="card"><h3>JSON API and live editing</h3><p>Fetch-based CRUD with proper status codes, debounced search and a built-in API inspector.</p></div>
+      <div class="card"><h3>Admin dashboard</h3><p>Live counts from a stored procedure, registrations by month, course split and recent activity.</p></div>
+      <div class="card"><h3>Tested</h3><p>189 automated checks across forms, database, sessions, uploads, API and navigation.</p></div>
+    </div>
+  </section>
+
+  <section id="tour" aria-labelledby="t">
+    <h2 id="t">Tour</h2>
+    <div class="shots">
+      <figure><img src="img/dashboard.jpg" alt="Admin dashboard with charts" loading="lazy"><figcaption>Admin dashboard: live numbers, charts and activity.</figcaption></figure>
+      <figure><img src="img/events.jpg" alt="Event tickets grid" loading="lazy"><figcaption>Events as tickets, with a seat counter on every stub.</figcaption></figure>
+      <figure><img src="img/live.jpg" alt="AJAX events page with API inspector" loading="lazy"><figcaption>Live events: create, edit and delete without reloading.</figcaption></figure>
+      <figure><img src="img/students.jpg" alt="Student management table" loading="lazy"><figcaption>Students: search, filters, sorting and paging.</figcaption></figure>
+      <figure><img src="img/palette.jpg" alt="Command palette" loading="lazy"><figcaption>Command palette on Ctrl+K.</figcaption></figure>
+      <figure><img src="img/dark.jpg" alt="Dark theme dashboard" loading="lazy"><figcaption>Dark theme, remembered per device.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="run" aria-labelledby="r">
+    <h2 id="r">Run it</h2>
+    <p class="lede">This page is static. The application itself needs PHP and MySQL, so it runs on XAMPP locally or on any PHP host.</p>
+<pre>1. Copy the project to  C:\xampp\htdocs\studenthub
+2. Start Apache and MySQL in XAMPP
+3. phpMyAdmin → Import → database/studenthub.sql
+4. Open http://localhost/studenthub/
+
+Admin    admin@studenthub.test        Admin123!
+Student  avery.lee@studenthub.test    Student123!</pre>
+    <p class="lede">Backend deployment steps (dedicated database user, HTTPS, writable folders) are in <code>docs/DEPLOYMENT.md</code>.</p>
+  </section>
+</div>
+<footer><div class="wrap">StudentHub · Practicals 7–15 · PHP, MySQL, vanilla JavaScript</div></footer>
+</body>
+</html>

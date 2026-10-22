@@ -1,0 +1,12 @@
+# runtime data
+storage/*.csv
+storage/*.json
+uploads/posters/*
+!uploads/posters/.htaccess
+!uploads/posters/seed-*.jpg
+# editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
